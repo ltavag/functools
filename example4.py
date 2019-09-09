@@ -1,7 +1,8 @@
-import requests
 import functools
+import requests
 
 
+@functools.lru_cache(maxsize=None)
 def get_temp_for_zipcode(zipcode):
     r = requests.get(
             'https://weather.cit.api.here.com/weather/1.0/report.json',
@@ -19,6 +20,27 @@ def get_temp_for_zipcode(zipcode):
 ZIP_CODES = [
         44102,  # Ohio City
         44113,  # Cleveland Heights
+        11211,  # Brooklyn NY
+        44113,  # Cleveland Heights
+        44113,  # Cleveland Heights
+        44113,  # Cleveland Heights
+        44113,  # Cleveland Heights
+        44113,  # Cleveland Heights
+        44113,  # Cleveland Heights
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
+        11211,  # Brooklyn NY
         11211,  # Brooklyn NY
         94016,  # SF
         55111   # Minneapolis

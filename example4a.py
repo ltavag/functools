@@ -1,7 +1,8 @@
-import requests
 import functools
+import requests
 
 
+@functools.lru_cache(maxsize=None)
 def get_temp_for_zipcode(zipcode):
     r = requests.get(
             'https://weather.cit.api.here.com/weather/1.0/report.json',
@@ -24,5 +25,9 @@ ZIP_CODES = [
         55111   # Minneapolis
 ]
 
-rank_by_warmth = functools.partial(sorted, key=get_temp_for_zipcode, reverse=True)
-print(rank_by_warmth(ZIP_CODES))
+avg_temp = functools.reduce(
+    lambda x, y: float(x)+float(y),
+    map(get_temp_for_zipcode, ZIP_CODES)
+) / len(ZIP_CODES)
+
+print(avg_temp)
